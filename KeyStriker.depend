@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1516633520 source:/media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/keylogger.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	<time.h>
+	<linux/input-event-codes.h>
+	<linux/input.h>
+	"keylogger.h"
+	"utils.h"
+
+1516605514 /media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/keylogger.h
+
+1516604964 /media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/utils.h
+
+1516632236 source:/media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/main.c
+	<stdlib.h>
+	<stdio.h>
+	<unistd.h>
+	"utils.h"
+
+1516632133 source:/media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/utils.c
+	<stdlib.h>
+	<stdio.h>
+	<errno.h>
+	<string.h>
+	"utils.h"
+	"keylogger.h"
+
+1518686733 source:/media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/src/keylogger.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	<time.h>
+	<linux/input-event-codes.h>
+	<linux/input.h>
+	"../includes/keylogger.h"
+	"../includes/utils.h"
+
+1518686541 /media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/includes/keylogger.h
+
+1516848612 /media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/includes/utils.h
+
+1518686944 source:/media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/src/main.c
+	<stdlib.h>
+	<stdio.h>
+	<unistd.h>
+	<syslog.h>
+	<errno.h>
+	<string.h>
+	<sys/stat.h>
+	"../includes/utils.h"
+
+1517504117 source:/media/thibault/D:/Ubuntu_Files/Programmation/Langage_C/Projets_Persos/KeyStriker/src/utils.c
+	<stdlib.h>
+	<stdio.h>
+	<errno.h>
+	<string.h>
+	"../includes/keylogger.h"
+	"../includes/utils.h"
+
