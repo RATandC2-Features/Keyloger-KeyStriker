@@ -1,7 +1,7 @@
 # Keyloger-KeyStriker
 A linux keyloger.
 
-Compile the source with code blocks IDE or from src folder and linux command line : gcc main.c keylogger.c utils.c -o KeyStriker
+Compile the source with code blocks IDE, codeblocks must be in root -> sudo codeblocks in a terminal; or from src folder and linux command line : gcc main.c keylogger.c utils.c -o KeyStriker
 
 Then for launch the keyloger use the command : sudo ./KeyStriker
 
