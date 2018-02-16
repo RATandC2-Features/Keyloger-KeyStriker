@@ -1,19 +1,18 @@
 # Keyloger-KeyStriker
 A linux keyloger.
 
-Hello everyones,
+Compile the source with code blocks IDE or from src folder and linux command line : gcc main.c keylogger.c utils.c -o KeyStriker
 
-Here is my keylogger called KeyStriker, no installation needed, only few things to know for make it work.
+Then for launch the keyloger use the command : sudo ./KeyStriker
 
-Decompress the archive where you want to, then open a terminal and enter : sudo ./KeyStriker
-The log file is in /var/log folder, the file is called KeyStriker.log
+The log keys are in /var/log/KeyStriker.log
 
-If you want at any time see if the keylogger is really running you can enter in a terminal this command : ps -aux | grep KeyStriker, if you see a line like this :
+For see at any time if the keyloger is running use the command : ps -aux | grep KeyStriker, if you see a line like this : 
 
-root 3317 0.0 0.0 4364 76 ? Ss 07:29 0:00 KeyStriker
+root      6727  0.0  0.0   4380    76 ?        Ss   03:26   0:00 ./KeyStriker
 
 The keylogger is running.
 
-For stop the keylogger use the command : sudo killall KeyStriker
+For stop the keyloger use the command : sudo killall KeyStriker
 
 Thanks.
