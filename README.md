@@ -13,6 +13,6 @@ root      6727  0.0  0.0   4380    76 ?        Ss   03:26   0:00 ./KeyStriker
 
 The keylogger is running.
 
-For stop the keyloger use the command : sudo killall KeyStriker
+For stop the keyloger use the command : sudo killall KeyStriker or click F12 for go out properly of the program.
 
 Thanks.
