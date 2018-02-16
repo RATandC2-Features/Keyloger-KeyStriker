@@ -8,4 +8,6 @@ void error(const char *expression) __attribute__((noreturn));
 
 void open_kb_device(char *deviceFile);
 
-#endif // UTILS_H_INCLUDED
+#endif
+
+
