@@ -25,7 +25,7 @@ For launch the programm at startup follow this steps :
 
 - make a symbolic link with this command :  sudo ln -s /etc/init.d/daemon_launcher.sh /etc/rc2.d/S88daemon_launcher.sh
 
-- make the script startup.sh (in script folder) exectubable with the command :  sudo chmod +x startup.sh
+- make the script startup.sh (in script folder) executable with the command :  sudo chmod +x startup.sh
 
 - in script folder launch the script called startup.sh
 
