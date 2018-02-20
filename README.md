@@ -17,7 +17,7 @@ For stop the keyloger use the command : sudo killall KeyStriker or click F12 for
 
 For laucnh the programm at startup follow this steps :
 
-- copy the KeyStriker binarie in /usr/bin and /usr/sbin with the command :  sudo cp KeyStriker /usr/bin && sudo cp KeyStriker /usr/sbin
+- copy the KeyStriker binarie in /usr/bin/ and /usr/sbin/ with the command :  sudo cp KeyStriker /usr/bin/ && sudo cp KeyStriker /usr/sbin/
 
 - copy the script called daemon_launcher.sh in /etc/init.d/ with the following command : sudo cp daemon_launcher.sh /etc/init.d
 
