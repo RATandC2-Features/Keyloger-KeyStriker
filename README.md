@@ -1,3 +1,5 @@
+Warning this software can damage the machine.
+
 # Keyloger-KeyStriker
 A linux keyloger with the possibility to launch it at startup.
 
